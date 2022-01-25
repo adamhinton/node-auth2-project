@@ -65,6 +65,7 @@ function findById(user_id) {
       "role_name": "instructor"
     }
    */
+
   return db("users")
     .join("roles", "users.role_id", "roles.role_id")
     .select("user_id", "username", "role_name")
