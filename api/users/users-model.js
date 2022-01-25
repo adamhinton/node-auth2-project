@@ -28,6 +28,12 @@ function find() {
 }
 
 function findBy(filter) {
+  // select
+  //   user_id, username, password, role_name
+  // from users
+  // join roles on users.role_id = roles.role_id
+  // where users.user_id = 1;
+
   /**
     You will need to join two tables.
     Resolves to an ARRAY with all users that match the filter condition.
@@ -41,6 +47,11 @@ function findBy(filter) {
       }
     ]
    */
+  //this may not be correct, it's not being used in the entire project so Gabe didn't test it. 17:11 in video
+  return db("users")
+    .join("roles", "users.role_id", "roles.role_id")
+    .select("user_id", "username", "password", "role_name")
+    .where(filter);
 }
 
 function findById(user_id) {
